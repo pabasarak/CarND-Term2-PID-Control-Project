@@ -26,6 +26,9 @@ The next step was to increase the speed. So I used max throttle to 0.6 with same
 The parameters we re-tuned again with twiddling and found PID coefficients as Kp,Ki,Kd { 10.53, 0.0076, -19.65}. However, this also has some significant oscillations. 
 Then the parameters were manually tuned and found Kp,Ki,Kd { 5, 1, 30} will result with smooth steering around the track while achieving maximum speed about 35mph.
 
+Final output video id found here
+https://youtu.be/bpr_ajhqNTE
+
 ## Note: 
 The initial coefficient plays a significant role when tuning the coefficients using Twiddling.
 
