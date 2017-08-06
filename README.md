@@ -1,5 +1,35 @@
+
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
+
+# PID Control Project - Reflections
+
+## P – Proportional 
+The Proportional coefficient (Kp) determines the correction correlation of the turning angle for a given error. For a given error, the high Kp will result with a large turning angle and low Kp will result with a small turning angle. Due to this Kp will govern how quickly the error gets rectify.
+When it comes to the Project, having a large Kp will makes to vehicle to quickly correct the error. However, it will result with overshooting and then oscillation. The suitable Kp for the project environment was found as 5.
+
+## I – Integral
+The Integral coefficient (Ki) determines the correction correlation to the accumulated error. This Ki is used to correct the bias error of the system.
+When it comes to the project, Ki will fix the drift in the steering. The suitable Ki for the project environment was found as 1.0.
+
+## D- Derivative
+The Derivative coefficient (Kd) determines the correction correlation to the rate of change of error. This Ki will dampen system when there is an oscillation or overshoot.
+When it come to the project, the suitable Kp for was found as 30.
+
+## PID Hyper parameter tuning
+Tuning the hyper parameters is very interesting task as there is no single answer for that. 
+First, I stared with manual tuning by adding random numbers. It resulted with high oscillation and driving the vehicle out of track within driving a small distance.
+Then I implemented the twiddle algorithm and made it automatically tune the parameters. The main goal was to drive the car whole track (at any speed). The maximum speed was set to 20mph, max throttle 0.3 and if there is an error or over speed, the throttle is 0.1.
+
+From that I found that  PID coefficients as Kp,Ki,Kd { 26.86, 0.000076, -0.233}. Though it goes around the track, the maximum speed around 10mph. 
+The next step was to increase the speed. So I used max throttle to 0.6 with same PID parameters. This increased the average speed to about 20mph. However, it introduced large oscillations that throw the car out of the track.
+The parameters we re-tuned again with twiddling and found PID coefficients as Kp,Ki,Kd { 10.53, 0.0076, -19.65}. However, this also has some significant oscillations. 
+Then the parameters were manually tuned and found Kp,Ki,Kd { 5, 1, 30} will result with smooth steering around the track while achieving maximum speed about 35mph.
+
+## Note: 
+The initial coefficient plays a significant role when tuning the coefficients using Twiddling.
+
+
 
 ---
 
